@@ -3,7 +3,16 @@ spring:
     name: config-client
   cloud:
     config:
-      uri: http://localhost:8769
       fail-fast: true
+#      通过地址访问配置中心
+#      uri: http://localhost:8769
+#      通过注册中心访问配置中心
+      discovery:
+        enabled: true
+        service-id: config-server
   profiles:
     active: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9761/eureka/
